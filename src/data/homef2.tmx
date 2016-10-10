@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="11" height="9" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="homef2" tilewidth="176" tileheight="144" tilecount="1" columns="0">
+  <tile id="0">
+   <image width="176" height="144" source="../netbeans/Pokemon/src/homef2.png"/>
+   <objectgroup draworder="index" name="wall">
+    <properties>
+     <property name="blocked" type="bool" value="true"/>
+    </properties>
+    <object id="18" name="tv" x="80" y="60" width="16" height="36">
+     <properties>
+      <property name="blocked" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="20" name="bed" x="16" y="78" width="16" height="34">
+     <properties>
+      <property name="blocked" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="22" name="back wall" x="0" y="0" width="176" height="32">
+     <properties>
+      <property name="blocked" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="29" name="next" x="120" y="32" width="8" height="16">
+     <properties>
+      <property name="next" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="31" name="rail1" x="112" y="32" width="8" height="16">
+     <properties>
+      <property name="blocked" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="33" name="rail2" x="112" y="48" width="32" height="16">
+        <properties>
+      <property name="blocked" type="bool" value="true"/>
+     </properties>
+    </object>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="11" height="9">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+1,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>
