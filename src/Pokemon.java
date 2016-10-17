@@ -217,6 +217,32 @@ public class Pokemon extends monsterDatabase {
 		poke.spdef_iv = getRandom(0, 31);
 		poke.speed_iv = getRandom(0, 31);
 	}
+        
+        public static void initStats(Pokemon poke) {
+            //if pokemon was found/caught at level x, will adjust exp (otherwise use set) 
+            int nextlvl = poke.level + 1;
+            switch (poke.lvl_rate) {
+                case "fast":
+                    poke.exp = (4 * (int)Math.pow(poke.level, 3))/5;
+                    poke.exp_lvl_end = (4 * (int)Math.pow((nextlvl), 3))/5;
+                    break;
+                case "med_fast":
+                    poke.exp = (int)Math.pow(poke.level, 3);
+                    poke.exp_lvl_end = (int)Math.pow(nextlvl, 3);
+                    break;
+                case "med_slow":
+                    poke.exp = ((6* (int)Math.pow(poke.level, 3))/5) - (15 * (int)Math.pow(poke.level, 2)) + (100 * poke.level) - 140;
+                    poke.exp_lvl_end = ((6* (int)Math.pow((nextlvl), 3))/5) - (15 * (int)Math.pow((nextlvl), 2)) + (100 * nextlvl) - 140;
+                    break;
+                case "slow":
+                    poke.exp = (5 * (int)Math.pow(poke.level, 3))/4;
+                    poke.exp_lvl_end = (5 * (int)Math.pow(nextlvl, 3))/4;
+                    break;
+                //do nothing
+                default:
+                    break;
+            }
+        }
 
 	//Sets the stats for the given information
 	public static void setStats(Pokemon poke) {
@@ -228,98 +254,130 @@ public class Pokemon extends monsterDatabase {
 		poke.spdef = (((2 * poke.base_spdef + poke.spdef_iv + (poke.spdef_iv/4))*poke.level)/100) + 5;
 		poke.speed = (((2 * poke.base_speed + poke.speed_iv + (poke.speed_iv/4))*poke.level)/100) + 5;
 
-		/*
-		 * Here, the nature will positively affect one stat and negatively 
-		 * affect another. multiply by 1.1 or .9 depending on the situation.
-		 * In case you're really digging into this and notice that there are
-		 * 5 less natures, that is because there are 5 'neutral' natures, 
-		 * that add and take away from the same stat, doing nothing. 
-		 */
-		if(poke.nature == "Lonely") {
-			poke.att = poke.att * 1.1;
-			poke.def = poke.def * .9;
-		} else if(poke.nature == "Adamant") {
-			poke.att = poke.att * 1.1;
-			poke.spatt = poke.spatt * .9;
-		} else if(poke.nature == "Naughty") {
-			poke.att = poke.att * 1.1;
-			poke.spdef = poke.spdef * .9;
-		} else if(poke.nature == "Brave") {
-			poke.att = poke.att * 1.1;
-			poke.speed = poke.speed * .9;
-		} else if(poke.nature == "Bold") {
-			poke.def = poke.def * 1.1;
-			poke.att = poke.att * .9;
-		} else if(poke.nature == "Impish") {
-			poke.def = poke.def * 1.1;
-			poke.spatt = poke.spatt * .9;
-		} else if(poke.nature == "Lax") {
-			poke.def = poke.def * 1.1;
-			poke.spdef = poke.spdef * .9;
-		} else if(poke.nature == "Relaxed") {
-			poke.def = poke.def * 1.1;
-			poke.speed = poke.speed * .9;
-		} else if(poke.nature == "Modest") {
-			poke.spatt = poke.spatt * 1.1;
-			poke.att = poke.att * .9;
-		} else if(poke.nature == "Mild") {
-			poke.spatt = poke.spatt * 1.1;
-			poke.def = poke.def * .9;
-		} else if(poke.nature == "Rash") {
-			poke.spatt = poke.spatt * 1.1;
-			poke.spdef = poke.spdef * .9;
-		} else if(poke.nature == "Quiet") {
-			poke.spatt = poke.spatt * 1.1;
-			poke.speed = poke.speed * .9;
-		} else if(poke.nature == "Calm") {
-			poke.spdef = poke.spdef * 1.1;
-			poke.att = poke.att * .9;
-		} else if(poke.nature == "Gentle") {
-			poke.spdef = poke.spdef * 1.1;
-			poke.def = poke.def * .9;
-		} else if(poke.nature == "Careful") {
-			poke.spdef = poke.spdef * 1.1;
-			poke.spatt = poke.spatt * .9;
-		} else if(poke.nature == "Sassy") {
-			poke.spdef = poke.spdef * 1.1;
-			poke.speed = poke.speed * .9;
-		} else if(poke.nature == "Timid") {
-			poke.speed = poke.speed * 1.1;
-			poke.att = poke.att * .9;
-		} else if(poke.nature == "Hasty") {
-			poke.speed = poke.speed * 1.1;
-			poke.def = poke.def * .9;
-		} else if(poke.nature == "Jolly") {
-			poke.speed = poke.speed * 1.1;
-			poke.spatt = poke.spatt * .9;
-		} else if(poke.nature == "Naive") {
-			poke.speed = poke.speed * 1.1;
-			poke.spdef = poke.spdef * .9;
-		} else {
-			//Do nothing 
-		}
+            /*
+             * Here, the nature will positively affect one stat and negatively
+             * affect another. multiply by 1.1 or .9 depending on the situation.
+             * In case you're really digging into this and notice that there are
+             * 5 less natures, that is because there are 5 'neutral' natures,
+             * that add and take away from the same stat, doing nothing.
+             */
+            switch (poke.nature) {
+                case "Lonely":
+                    poke.att = poke.att * 1.1;
+                    poke.def = poke.def * .9;
+                    break;
+                case "Adamant":
+                    poke.att = poke.att * 1.1;
+                    poke.spatt = poke.spatt * .9;
+                    break;
+                case "Naughty":
+                    poke.att = poke.att * 1.1;
+                    poke.spdef = poke.spdef * .9;
+                    break;
+                case "Brave":
+                    poke.att = poke.att * 1.1;
+                    poke.speed = poke.speed * .9;
+                    break;
+                case "Bold":
+                    poke.def = poke.def * 1.1;
+                    poke.att = poke.att * .9;
+                    break;
+                case "Impish":
+                    poke.def = poke.def * 1.1;
+                    poke.spatt = poke.spatt * .9;
+                    break;
+                case "Lax":
+                    poke.def = poke.def * 1.1;
+                    poke.spdef = poke.spdef * .9;
+                    break;
+                case "Relaxed":
+                    poke.def = poke.def * 1.1;
+                    poke.speed = poke.speed * .9;
+                    break;
+                case "Modest":
+                    poke.spatt = poke.spatt * 1.1;
+                    poke.att = poke.att * .9;
+                    break;
+                case "Mild":
+                    poke.spatt = poke.spatt * 1.1;
+                    poke.def = poke.def * .9;
+                    break;
+                case "Rash":
+                    poke.spatt = poke.spatt * 1.1;
+                    poke.spdef = poke.spdef * .9;
+                    break;
+                case "Quiet":
+                    poke.spatt = poke.spatt * 1.1;
+                    poke.speed = poke.speed * .9;
+                    break;
+                case "Calm":
+                    poke.spdef = poke.spdef * 1.1;
+                    poke.att = poke.att * .9;
+                    break;
+                case "Gentle":
+                    poke.spdef = poke.spdef * 1.1;
+                    poke.def = poke.def * .9;
+                    break;
+                case "Careful":
+                    poke.spdef = poke.spdef * 1.1;
+                    poke.spatt = poke.spatt * .9;
+                    break;
+                case "Sassy":
+                    poke.spdef = poke.spdef * 1.1;
+                    poke.speed = poke.speed * .9;
+                    break;
+                case "Timid":
+                    poke.speed = poke.speed * 1.1;
+                    poke.att = poke.att * .9;
+                    break;
+                case "Hasty":
+                    poke.speed = poke.speed * 1.1;
+                    poke.def = poke.def * .9;
+                    break;
+                case "Jolly":
+                    poke.speed = poke.speed * 1.1;
+                    poke.spatt = poke.spatt * .9;
+                    break;
+                case "Naive":
+                    poke.speed = poke.speed * 1.1;
+                    poke.spdef = poke.spdef * .9;
+                    break;
+            //Do nothing
+                default:
+                    break;
+            }
 
-		if(poke.lvl_rate == "fast") {
-			poke.exp_lvl_start = (4 * (int)Math.pow(poke.level, 3))/5;
-			poke.exp_lvl_end = (4 * (int)Math.pow((poke.level + 1), 3))/5;
-		} else if (poke.lvl_rate == "med_fast") {
-			poke.exp_lvl_start = (int)Math.pow(poke.level, 3);
-			poke.exp_lvl_end = (int)Math.pow(poke.level + 1, 3);
-		} else if (poke.lvl_rate == "med_slow") {
-			poke.exp_lvl_start = ((6* (int)Math.pow(poke.level, 3))/5) - (15 * (int)Math.pow(poke.level, 2)) + (100 * poke.level) - 140;
-			poke.exp_lvl_end = ((6* (int)Math.pow(poke.level + 1, 3))/5) - (15 * (int)Math.pow(poke.level + 1, 2)) + (100 * poke.level + 1) - 140;
-		} else if (poke.lvl_rate == "slow") {
-			poke.exp_lvl_start = (5 * (int)Math.pow(poke.level, 3))/4;
-			poke.exp_lvl_end = (5 * (int)Math.pow(poke.level + 1, 3))/4; 
-		}
+            int nextlvl = poke.level + 1;
+            switch (poke.lvl_rate) {
+                case "fast":
+                    poke.exp_lvl_start = (4 * (int)Math.pow(poke.level, 3))/5;
+                    poke.exp_lvl_end = (4 * (int)Math.pow(nextlvl, 3))/5;
+                    break;
+                case "med_fast":
+                    poke.exp_lvl_start = (int)Math.pow(poke.level, 3);
+                    poke.exp_lvl_end = (int)Math.pow(nextlvl, 3);
+                    break;
+                case "med_slow":
+                    poke.exp_lvl_start = ((6* (int)Math.pow(poke.level, 3))/5) - (15 * (int)Math.pow(poke.level, 2)) + (100 * poke.level) - 140;
+                    poke.exp_lvl_end = ((6* (int)Math.pow(nextlvl, 3))/5) - (15 * (int)Math.pow(nextlvl, 2)) + (100 * nextlvl) - 140;
+                    break;
+                case "slow":
+                    poke.exp_lvl_start = (5 * (int)Math.pow(poke.level, 3))/4;
+                    poke.exp_lvl_end = (5 * (int)Math.pow(nextlvl, 3))/4;
+                    break;
+                //do nothing
+                default:
+                    break;
+            }
 	}
 
 	//wrapper for easy calling
-	public static void setNewPokemon(Pokemon poke) {
+	public static void setNewPokemon(Pokemon poke, int lvl) {
+                poke.level = lvl;
 		setAbility(poke);
 		setGender(poke);
 		setNature(poke);
 		setIv(poke);
-		setStats(poke);
+		initStats(poke);
 	}
 }
