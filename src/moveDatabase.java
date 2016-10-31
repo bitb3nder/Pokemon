@@ -33,15 +33,16 @@ public class moveDatabase {
 		 */
 
 		database.put("-", "-|-|-|0|0|0|0|0|0|0|-|0|-|-|0|0|-");
-		database.put("Tackle", "Tackle|Normal|Physical|1|1|50|100|35|35|000|None|0|None|None|0|0|A physical attack in which the user charges, full body, into the foe.");
+		database.put("Tackle", "Tackle|Normal|Phys|1|1|50|100|35|35|000|None|0|None|None|0|0|A physical attack in which the user charges, full body, into the foe.");
 		database.put("Growl", "Growl|Normal|Stat|0|1|0|100|40|40|000|None|0|Foe|att|-1|0|The user growls cutely, making the foe lower its attack stat.");
-		database.put("Leech Seed", "Leech Seed|Normal|Condition|");
-		database.put("Vine Whip", "");
-		database.put("Poison Powder", "");
-		database.put("Sleep Powder", "");
-		database.put("Take Down", "");
-		database.put("Razor Leaf", "");
-		database.put("Sweet Scent", "");
+		database.put("Leech Seed", "Leech Seed|Grass|Cond|0|1|0|90|10|10|000|Seeded|100|Foe|None|0|0|A seed is planted on the foe to steal some HP for the user on every turn.");
+		database.put("Vine Whip", "Vine Whip|Grass|Phys|1|1|45|100|25|25|000|None|0|Foe|None|0|0|The foe is struck with slender, whiplike vines.");
+		database.put("Poison Powder", "Poison Powder|Grass|Cond|");
+		database.put("Sleep Powder", "Sleep Powder|Grass|Cond|");
+		database.put("Take Down", "Take Down|Normal|Phys|");
+		database.put("Razor Leaf", "Razor Leaf|Grass|Phys|");
+		//Stopping here temporarily for testing purposes 
+                database.put("Sweet Scent", "");
 		database.put("Growth", "");
 		database.put("Double-Edge", "");
 		database.put("Worry Seed", "");

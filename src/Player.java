@@ -6,8 +6,58 @@ public class Player {
 	public int hof_ribbon, star_ribbon, pokedex_ribbon;
 	public String bigFront, bigBack;
 	public String front1, front2, front3, back1, back2, back3, left1, left2, left3, right1, right2, right3;
-
-	public Player(String data) {
+        
+        public float speed = 60;
+        //location 
+        public float playerX;
+        public float playerY;
+	
+        public Player() {
+            this.name = null;
+            this.gender = null;
+            this.money = 0;
+            
+            this.pokedex = new Pokedex();
+            
+            this.main = null;
+            this.p2 = null;
+            this.p3 = null;
+            this.p4 = null;
+            this.p5 = null;
+            this.p6 = null; 
+            
+            this.badge1 = 0;
+            this.badge2 = 0;
+            this.badge3 = 0;
+            this.badge4 = 0;
+            this.badge5 = 0;
+            this.badge6 = 0;
+            this.badge7 = 0;
+            this.badge8 = 0;
+            
+            this.hof_ribbon = 0;
+            this.star_ribbon = 0;
+            this.pokedex_ribbon = 0;
+            
+            this.bigFront = "";
+            this.bigBack = "";
+            this.front1 = "";
+            this.front2 = "";
+            this.front3 = "";
+            this.back1 = "";
+            this.back2 = "";
+            this.back3 = "";
+            this.left1 = "";
+            this.left2 = "";
+            this.left3 = "";
+            this.right1 = "";
+            this.right2 = "";
+            this.right3 = "";
+        }
+        
+        /*
+        from a save state        
+        public Player(String data) {
 		//basic player information
 		this.name = data[];
 		this.gender = data[];
@@ -91,4 +141,5 @@ public class Player {
 		this.right2 = data[];
 		this.right3 = data[];
 	}
+        */
 }

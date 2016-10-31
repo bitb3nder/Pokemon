@@ -11,14 +11,14 @@ public class Move extends moveDatabase {
 		String data[] = info.split("\\|");
 
 		//basics of every move
-		this.name = data[0];
-		this.type = data[1];
-		this.category = data[2];
-		this.contact = Integer.parseInt(data[3]);
-		this.protect = Integer.parseInt(data[4]);
-		this.base_pow = Double.parseDouble(data[5]);
-		this.base_acc = Double.parseDouble(data[6]);
-		this.pp = Double.parseDouble(data[7]);
+		this.name = data[0]; //name
+		this.type = data[1]; //e.g. grass, fire, water
+		this.category = data[2]; //e.g. phys, cond, stat
+		this.contact = Integer.parseInt(data[3]); //1 (yes) or 0 (no)
+		this.protect = Integer.parseInt(data[4]); //1 (yes) or 0 (no)
+		this.base_pow = Double.parseDouble(data[5]); 
+		this.base_acc = Double.parseDouble(data[6]); 
+		this.pp = Double.parseDouble(data[7]); 
 		this.max_pp = Double.parseDouble(data[8]);
 		this.tmID = Integer.parseInt(data[9]);
 

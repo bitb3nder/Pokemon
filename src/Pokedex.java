@@ -8,29 +8,17 @@ public class Pokedex {
 	 * pokedex from a frame. 
 	 */
 	public Pokedex() {
-		this.seennum = seennum;
-		this.seen = seen;
-		this.caughtnum = caughtnum;
-		this.caught = caught; 
+		this.seennum = 0;
+		this.seen = null;
+		this.caughtnum = 0;
+		this.caught = null; 
 	}
 
-	public registerSeen(int id) {
-		//to make sure the pokemon has not been previously spotted!
-		if((ArrayUtils.contains(seen, key)) == false) {
-			
-
-			//check off another one ;)
-			seennum++;
-		}
+	public void registerSeen(int id) {
+            seennum++;
 	}
 
-	public registerCaught(int id) {
-		//to make sure the pokemon has not been previously caught!
-		if((ArrayUtils.contains(caught, key)) == false) {
-
-
-			//check off another one ;)
-			caughtnum++;
-		}
+	public void registerCaught(int id) {
+            caughtnum++;
 	}
 }

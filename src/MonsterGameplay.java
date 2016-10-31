@@ -16,28 +16,36 @@ public class MonsterGameplay extends Pokemon {
             //exp to next will hold the exp value required to get to the next level
             switch (poke.lvl_rate) {
                 case "fast":
-                    while(poke.exp < poke.exp_lvl_end) {
+                    while(poke.exp > poke.exp_lvl_end) {
                         poke.level = poke.level + 1;
+                        System.out.println("lvl up!");
+                        evolve(poke);
                         setStats(poke);
                     }
                     break;
                 case "med_fast":
-                    while(poke.exp < poke.exp_lvl_end) {
-				poke.level = poke.level + 1;
-				setStats(poke);
-			}
+                    while(poke.exp > poke.exp_lvl_end) {
+                        poke.level = poke.level + 1;
+                        System.out.println("lvl up!");
+                        evolve(poke);
+                        setStats(poke);
+                    }
                     break;
                 case "slow":
-                    while(poke.exp < poke.exp_lvl_end) {
-				poke.level = poke.level + 1;
-				setStats(poke);
-			}
+                    while(poke.exp > poke.exp_lvl_end) {
+			poke.level = poke.level + 1;
+			System.out.println("lvl up!");
+                        evolve(poke);
+                        setStats(poke);
+                    }
                     break;
                 case "med_slow":
-                    while(poke.exp < poke.exp_lvl_end) {
-				poke.level = poke.level + 1;
-				setStats(poke);
-			}
+                    while(poke.exp > poke.exp_lvl_end) {
+			poke.level = poke.level + 1;
+			System.out.println("lvl up!");
+                        evolve(poke);
+                        setStats(poke);
+                    }
                     break;
             //do nothing
                 default:
@@ -53,7 +61,9 @@ public class MonsterGameplay extends Pokemon {
 		//if the pokemon is at evolve level or met the condition
 		checkSpecialEvolve(poke);
 		if(poke.evolve_lvl <= poke.level || "true".equals(poke.evolve_cond)) {
-			Pokemon evo = new Pokemon(poke.evolve);
+                        System.out.println("Evolved!");
+                    
+                        Pokemon evo = new Pokemon(poke.evolve);
 			//changes the pokemons name to its evolution.
 			poke.id = evo.id;
 			poke.name = evo.name;
@@ -121,9 +131,11 @@ public class MonsterGameplay extends Pokemon {
 	}
 
 	public static void learnMove(Pokemon poke) {
+            //need to redo with the GUI 
 	}
 
 	public static void teachTm(Pokemon poke) {
+            //need to redo with the GUI
 	}
 
 	public static void check(Pokemon poke) {
