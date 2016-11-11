@@ -97,23 +97,7 @@ public class MonsterGameplay extends Pokemon {
 			//all current stats and happiness remain the same
 			//all learned moves are the same 
 
-			poke.unlearned1 = evo.unlearned1;
-			poke.unlearned2 = evo.unlearned2;
-			poke.unlearned3 = evo.unlearned3;
-			poke.unlearned4 = evo.unlearned4;
-			poke.unlearned5 = evo.unlearned5;
-			poke.unlearned6 = evo.unlearned6;
-			poke.unlearned7 = evo.unlearned7;
-			poke.unlearned8 = evo.unlearned8;
-			poke.unlearned9 = evo.unlearned9;
-			poke.unlearned10 = evo.unlearned10;
-			poke.unlearned11 = evo.unlearned11;
-			poke.unlearned12 = evo.unlearned12;
-			poke.unlearned13 = evo.unlearned13;
-			poke.unlearned14 = evo.unlearned14;
-			poke.unlearned15 = evo.unlearned15;
- 
-			poke.learnset = evo.learnset;
+			poke.learnSet = evo.learnSet;
 
 			poke.learn_tm_hm = evo.learn_tm_hm;
 

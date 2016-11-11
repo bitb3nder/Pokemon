@@ -3,7 +3,6 @@ public class Move extends moveDatabase {
 	public int contact, protect, amount, priority, tmID; 
 	public double base_pow, base_acc, pp, max_pp, status_percent;
 
-
 	public Move(String move){
 		//Use "move" to gather info from dictionary
 		String info = get_move(move);

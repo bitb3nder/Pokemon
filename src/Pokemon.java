@@ -1,4 +1,6 @@
 import java.util.Random;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Pokemon extends monsterDatabase {
 	//all of the global variables that make up a Pokemon
@@ -9,10 +11,10 @@ public class Pokemon extends monsterDatabase {
 	public double hp_ev, att_ev, def_ev, spatt_ev, spdef_ev, speed_ev, hp_iv, att_iv, def_iv, spatt_iv, spdef_iv, speed_iv;
 	public double current_hp, evasion, accuracy;
 	public Move move1, move2, move3, move4; 
-	public String unlearned1, unlearned2, unlearned3, unlearned4, unlearned5, unlearned6, unlearned7, unlearned8, unlearned9, unlearned10, unlearned11, unlearned12, unlearned13, unlearned14, unlearned15;
-	public String learnset[];
+	public Map<Integer, String> learnSet;
 	public String learn_tm_hm[];
 	public String pokedex_entry, nickname;
+        public String item;
 
 	//creates the pokemon object
 	public Pokemon(int id) {
@@ -98,30 +100,22 @@ public class Pokemon extends monsterDatabase {
 		this.move3 = new Move(data[60]);
 		this.move4 = new Move(data[61]);
 
-		//Unlearned Moves & levels
-		this.unlearned1 = data[62];
-		this.unlearned2 = data[63];
-		this.unlearned3 = data[64];
-		this.unlearned4 = data[65];
-		this.unlearned5 = data[66];
-		this.unlearned6 = data[67];
-		this.unlearned7 = data[68];
-		this.unlearned8 = data[69];
-		this.unlearned9 = data[70];
-		this.unlearned10 = data[71];
-		this.unlearned11 = data[72];
-		this.unlearned12 = data[73];
-		this.unlearned13 = data[74];
-		this.unlearned14 = data[75];
-		this.unlearned15 = data[76];
-
-		this.learnset = data[77].split(",");
-
+                this.learnSet = new HashMap<>();
+		//move,lvl:move,lvl:move,lvl
+		String temp[] = data[62].split(":");
+                for (String temp1 : temp) {
+                //move,level
+                String[] temp2 = temp1.split(",");
+                //learnset -> (move, lvl);
+                this.learnSet.put(Integer.parseInt(temp2[1]), temp[2]);
+            }
+		
 		//Learnable Tms & Hms 
-		this.learn_tm_hm = data[78].split(",");
+		this.learn_tm_hm = data[63].split(",");
 
-		this.pokedex_entry = data[79];
-		this.nickname = data[80];
+		this.pokedex_entry = data[64];
+		this.nickname = data[65];
+                this.item = data[66];
 	}
 
 	//random number generator

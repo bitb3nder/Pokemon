@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="48" height="40" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="GrassMap" tilewidth="16" tileheight="16" tilecount="132" columns="12">
+  <image source="GrassMap.png" width="196" height="176"/>
+  <tile id="3">
+   <properties>
+    <property name="blocked" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="wild" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="blocked" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="blocked" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="blocked" type="bool" value="true"/>
+    <property name="water" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="blocked" type="bool" value="true"/>
+    <property name="water" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="blocked" type="bool" value="true"/>
+    <property name="water" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="blocked" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="25">
+   <properties>
+    <property name="blocked" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="26">
+   <properties>
+    <property name="blocked" type="bool" value="true"/>
+    <property name="water" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="blocked" type="bool" value="true"/>
+    <property name="water" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="blocked" type="bool" value="true"/>
+    <property name="water" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="36">
+   <properties>
+    <property name="blocked" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="37">
+   <properties>
+    <property name="blocked" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="38">
+   <properties>
+    <property name="blocked" type="bool" value="true"/>
+    <property name="water" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="39">
+   <properties>
+    <property name="blocked" type="bool" value="true"/>
+    <property name="water" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="40">
+   <properties>
+    <property name="blocked" type="bool" value="true"/>
+    <property name="water" type="bool" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="48" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztmM1uAjEMhBeJPVIK9FJoCxda+v4vWB+6IrL8M06cFRJ7+BQhgj07sZOwm2EYXohN0rgi9sSBeEuMq43vxDFx5Pqz4/PxSnwnjlx/dnw+Zq/nUj/PVT+rIGWdaJT6o/G1fEhehLJO5tAv1WeENfvM+z6qv4w3/qPlKvN59YKuD+/73v6j+tD14X0vedeqX9Lq6eN6tsQrsXPm9fBf0hrdb07EB/FZkV/Tr3mi9VhLvfXQ3xLzEfT/EDfiV/ndCMZH9hpJ/6iA6vew4pY1JvUHr8Ea/ZMvEf3cS82TEqQ/avRPvkT0156rHl6tWr5E9Fte8pqw1gZZN5Qe56/Xc3Pob81h6c9E0o/k1s43lMgd29LzRZyJy3CvYUS/deZId1MOsq+i9YjAY0f2DOuu/Uj12Dt2715q8Qi5K/TWh+b39lUvhtX7qLYyvtT3NfpRtHsAcuZYGqXvJK+Q/9IWUu8jaxfR73kVAX0+ZP2RZ/S8suo3690R+pw1ea016XXHjb4TseZbZxf/bq53eTxvlo9eHLQ3Jn3e/DWb36o/K87CwkIbf5HqOAY=
+  </data>
+ </layer>
+</map>

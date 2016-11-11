@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="GrassMap" tilewidth="16" tileheight="16" tilecount="132" columns="12">
+  <image source="GrassMap.png" width="196" height="176"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="40" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+2YS08CUQyFh4RRWKgobMQXG1GE///7qMk0aZqe6bkVlQWLb6Hp4/S2t3PDpOu6ScKUsLlw4RRcCdfC7Jd8W+OrvbIXlsKX+z8D49sS/7uGh8H+HFkJr8LbHzMf8h8Su03S+4wb4bZgqz1bFfOy+/hRWJu/+4EojrWt6EOa+hGfd2FLxre2Xl8fgOIgW7aXjB2jb0xj1C/USx/L2qFcP9GnffbnwPbS2qEeoPlD+qKe+POq9NLn0pit+iIt0Tn4/FkNPpfGZPRV7+G0wY+dPzTzp+ROWAj3hK3XpzVnd0NzeGxONHNPwrPwQtgy+9n69i6Hx+ZEM/chfAo7YGvPxOpDNUS+jL7qNwPpQ/VGvow+NP/MdynS11Kv9sizA3kq3ySrL3ujVt7wXiOaaSV6d7Bv4ux907qLsn2t+tk38QbUHe0jrzXad9Es2djMNzPSg/zG3hXRvsvOlL0LXg/y8zvS6vP7Dp0zij1We7UOZlZb35aV+49q/4/fiY6AVnBGwBIAAA==
+  </data>
+ </layer>
+</map>
