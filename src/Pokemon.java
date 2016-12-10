@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Pokemon extends monsterDatabase {
 	//all of the global variables that make up a Pokemon
 	public int id, evolve, evolve_lvl, ability1_percent, percent_male, catch_rate, exp_yield, level, exp, exp_lvl_start, exp_lvl_end, exp_to_next, happiness;
-	public String name, type1, type2, evolve_cond, ability1, ability2, gender, height, weight, nature, lvl_rate, ev_yield, color, current_status;
+	public String name, type1, type2, evolve_cond, ability1, ability2, gender, height, weight, nature, lvl_rate, ev_yield, color, status;
 	public String front_img, back_img, footprint, overworld_img;
 	public double base_hp, base_att, base_def, base_spatt, base_spdef, base_speed, hp, att, def, spatt, spdef, speed;
 	public double hp_ev, att_ev, def_ev, spatt_ev, spdef_ev, speed_ev, hp_iv, att_iv, def_iv, spatt_iv, spdef_iv, speed_iv;
@@ -89,7 +89,7 @@ public class Pokemon extends monsterDatabase {
 		this.current_hp = Double.parseDouble(data[53]);
 		this.evasion = Double.parseDouble(data[54]);
 		this.accuracy = Double.parseDouble(data[55]);
-		this.current_status = data[56];
+		this.status = data[56];
 
 		//Other
 		this.happiness = Integer.parseInt(data[57]);
@@ -103,13 +103,17 @@ public class Pokemon extends monsterDatabase {
                 this.learnSet = new HashMap<>();
 		//move,lvl:move,lvl:move,lvl
 		String temp[] = data[62].split(":");
-                for (String temp1 : temp) {
-                //move,level
-                String[] temp2 = temp1.split(",");
-                //learnset -> (move, lvl);
-                this.learnSet.put(Integer.parseInt(temp2[1]), temp[2]);
-            }
-		
+                //after this split, in temp[] we have several Strings containing moves and lvl learned
+                //takes each individual string
+                for(String s: temp) {
+                    //splits it into two seperate strings, (move lvl)
+                    String[] temp2 = s.split(",");
+                    //so temp2[0] = the move
+                    //temp2[1] = the level learned
+                    //store in a hashmap as such
+                    this.learnSet.put(Integer.parseInt(temp2[1]), temp2[0]);
+                }
+                //learnset -> (move, lvl);		
 		//Learnable Tms & Hms 
 		this.learn_tm_hm = data[63].split(",");
 
@@ -130,7 +134,7 @@ public class Pokemon extends monsterDatabase {
 	public static void setAbility(Pokemon poke) {
 		int x = getRandom(0,100);
 		if(x < poke.ability1_percent) {
-			poke.ability1 = poke.ability1;
+                    //no
 		} else {
 			poke.ability1 = poke.ability2;
 		}
@@ -140,9 +144,9 @@ public class Pokemon extends monsterDatabase {
 	public static void setGender(Pokemon poke) {
 		int x = getRandom(0,100);
 		if(x > poke.percent_male) {
-			poke.gender = "Female";
+			poke.gender = "FEMALE";
 		} else {
-			poke.gender = "Male";
+			poke.gender = "MALE";
 		}
 	}
 
@@ -213,7 +217,6 @@ public class Pokemon extends monsterDatabase {
 	}
         
         public static void initStats(Pokemon poke) {
-            //if pokemon was found/caught at level x, will adjust exp (otherwise use set) 
             int nextlvl = poke.level + 1;
             switch (poke.lvl_rate) {
                 case "fast":
@@ -240,14 +243,34 @@ public class Pokemon extends monsterDatabase {
 
 	//Sets the stats for the given information
 	public static void setStats(Pokemon poke) {
-		//all stats are calculated regarless of the pokemons nature.
-		poke.hp    = (((2 * poke.base_hp + poke.hp_iv + (poke.hp_ev/4))*poke.level)/100) + poke.level + 10;
-		poke.att   = (((2 * poke.base_att + poke.att_iv + (poke.att_iv/4))*poke.level)/100) + 5;
-		poke.def   = (((2 * poke.base_def + poke.def_iv + (poke.def_iv/4))*poke.level)/100) + 5;
-		poke.spatt = (((2 * poke.base_spatt + poke.spatt_iv + (poke.spatt_iv/4))*poke.level)/100) + 5;
-		poke.spdef = (((2 * poke.base_spdef + poke.spdef_iv + (poke.spdef_iv/4))*poke.level)/100) + 5;
-		poke.speed = (((2 * poke.base_speed + poke.speed_iv + (poke.speed_iv/4))*poke.level)/100) + 5;
+            int nextlvl = poke.level + 1;
+            switch (poke.lvl_rate) {
+                case "fast":
+                    poke.exp_lvl_end = (4 * (int)Math.pow((nextlvl), 3))/5;
+                    break;
+                case "med_fast":
+                    poke.exp_lvl_end = (int)Math.pow(nextlvl, 3);
+                    break;
+                case "med_slow":
+                    poke.exp_lvl_end = ((6* (int)Math.pow((nextlvl), 3))/5) - (15 * (int)Math.pow((nextlvl), 2)) + (100 * nextlvl) - 140;
+                    break;
+                case "slow":
+                    poke.exp_lvl_end = (5 * (int)Math.pow(nextlvl, 3))/4;
+                    break;
+                //do nothing
+                default:
+                    break;
+            }
+            //all stats are calculated regarless of the pokemons nature.
+            poke.hp    = (((2 * poke.base_hp + poke.hp_iv + (poke.hp_ev/4))*poke.level)/100) + poke.level + 10;
+            poke.att   = (((2 * poke.base_att + poke.att_iv + (poke.att_iv/4))*poke.level)/100) + 5;
+            poke.def   = (((2 * poke.base_def + poke.def_iv + (poke.def_iv/4))*poke.level)/100) + 5;
+            poke.spatt = (((2 * poke.base_spatt + poke.spatt_iv + (poke.spatt_iv/4))*poke.level)/100) + 5;
+            poke.spdef = (((2 * poke.base_spdef + poke.spdef_iv + (poke.spdef_iv/4))*poke.level)/100) + 5;
+            poke.speed = (((2 * poke.base_speed + poke.speed_iv + (poke.speed_iv/4))*poke.level)/100) + 5;
 
+            //set the hp to the max value. Will only happen on init or level up.
+            poke.current_hp = poke.hp;
             /*
              * Here, the nature will positively affect one stat and negatively
              * affect another. multiply by 1.1 or .9 depending on the situation.
@@ -338,30 +361,7 @@ public class Pokemon extends monsterDatabase {
                     break;
             //Do nothing
                 default:
-                    break;
-            }
-
-            int nextlvl = poke.level + 1;
-            switch (poke.lvl_rate) {
-                case "fast":
-                    poke.exp_lvl_start = (4 * (int)Math.pow(poke.level, 3))/5;
-                    poke.exp_lvl_end = (4 * (int)Math.pow(nextlvl, 3))/5;
-                    break;
-                case "med_fast":
-                    poke.exp_lvl_start = (int)Math.pow(poke.level, 3);
-                    poke.exp_lvl_end = (int)Math.pow(nextlvl, 3);
-                    break;
-                case "med_slow":
-                    poke.exp_lvl_start = ((6* (int)Math.pow(poke.level, 3))/5) - (15 * (int)Math.pow(poke.level, 2)) + (100 * poke.level) - 140;
-                    poke.exp_lvl_end = ((6* (int)Math.pow(nextlvl, 3))/5) - (15 * (int)Math.pow(nextlvl, 2)) + (100 * nextlvl) - 140;
-                    break;
-                case "slow":
-                    poke.exp_lvl_start = (5 * (int)Math.pow(poke.level, 3))/4;
-                    poke.exp_lvl_end = (5 * (int)Math.pow(nextlvl, 3))/4;
-                    break;
-                //do nothing
-                default:
-                    break;
+                    break;      
             }
 	}
 
@@ -372,6 +372,7 @@ public class Pokemon extends monsterDatabase {
 		setGender(poke);
 		setNature(poke);
 		setIv(poke);
-		initStats(poke);
+                initStats(poke);
+                setStats(poke);
 	}
 }

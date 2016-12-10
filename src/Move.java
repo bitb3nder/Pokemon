@@ -12,7 +12,7 @@ public class Move extends moveDatabase {
 		//basics of every move
 		this.name = data[0]; //name
 		this.type = data[1]; //e.g. grass, fire, water
-		this.category = data[2]; //e.g. phys, cond, stat
+		this.category = data[2]; //e.g. phys, spec, cond, stat
 		this.contact = Integer.parseInt(data[3]); //1 (yes) or 0 (no)
 		this.protect = Integer.parseInt(data[4]); //1 (yes) or 0 (no)
 		this.base_pow = Double.parseDouble(data[5]); 

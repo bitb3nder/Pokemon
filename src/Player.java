@@ -2,7 +2,9 @@ public class Player {
 	public String name, gender;
 	public Pokemon main, p2, p3, p4, p5, p6;
 	public Pokedex pokedex;
-	public int money, badge1, badge2, badge3, badge4, badge5, badge6, badge7, badge8;
+        public Bag bag;
+	public int money; 
+        public boolean badge1, badge2, badge3, badge4, badge5, badge6, badge7, badge8;
 	public int hof_ribbon, star_ribbon, pokedex_ribbon;
 	public String bigFront, bigBack;
 	public String front1, front2, front3, back1, back2, back3, left1, left2, left3, right1, right2, right3;
@@ -18,6 +20,7 @@ public class Player {
             this.money = 0;
             
             this.pokedex = new Pokedex();
+            this.bag = new Bag();
             
             this.main = null;
             this.p2 = null;
@@ -26,14 +29,14 @@ public class Player {
             this.p5 = null;
             this.p6 = null; 
             
-            this.badge1 = 0;
-            this.badge2 = 0;
-            this.badge3 = 0;
-            this.badge4 = 0;
-            this.badge5 = 0;
-            this.badge6 = 0;
-            this.badge7 = 0;
-            this.badge8 = 0;
+            this.badge1 = false;
+            this.badge2 = false;
+            this.badge3 = false;
+            this.badge4 = false;
+            this.badge5 = false;
+            this.badge6 = false;
+            this.badge7 = false;
+            this.badge8 = false;
             
             this.hof_ribbon = 0;
             this.star_ribbon = 0;

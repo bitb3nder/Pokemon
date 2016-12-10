@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /*
  * This file contains all of the methods that upgrade and track the progression of the pokemon,
  * handling everything from leveling up and learning new moves to evolution. 
@@ -19,42 +21,42 @@ public class MonsterGameplay extends Pokemon {
                     while(poke.exp > poke.exp_lvl_end) {
                         poke.level = poke.level + 1;
                         System.out.println("lvl up!");
-                        evolve(poke);
                         setStats(poke);
+                        evolve(poke);
+                        learnMove(poke);
                     }
                     break;
                 case "med_fast":
                     while(poke.exp > poke.exp_lvl_end) {
                         poke.level = poke.level + 1;
                         System.out.println("lvl up!");
-                        evolve(poke);
                         setStats(poke);
+                        evolve(poke);
+                        learnMove(poke);
                     }
                     break;
                 case "slow":
                     while(poke.exp > poke.exp_lvl_end) {
 			poke.level = poke.level + 1;
 			System.out.println("lvl up!");
-                        evolve(poke);
                         setStats(poke);
+                        evolve(poke);
+                        learnMove(poke);
                     }
                     break;
                 case "med_slow":
                     while(poke.exp > poke.exp_lvl_end) {
 			poke.level = poke.level + 1;
 			System.out.println("lvl up!");
-                        evolve(poke);
                         setStats(poke);
+                        evolve(poke);
+                        learnMove(poke);
                     }
                     break;
             //do nothing
                 default:
                     break;
             }
-	}
-
-	public static void addExp(Pokemon poke) {
-		poke.exp = poke.exp + 5000;
 	}
 
 	public static void evolve(Pokemon poke) {
@@ -115,7 +117,60 @@ public class MonsterGameplay extends Pokemon {
 	}
 
 	public static void learnMove(Pokemon poke) {
-            //need to redo with the GUI 
+            //if there is a move to learn & u dont already know it 
+            if(poke.learnSet.get(poke.level) != null && !poke.learnSet.get(poke.level).equals(poke.move1.name) && !poke.learnSet.get(poke.level).equals(poke.move2.name) && !poke.learnSet.get(poke.level).equals(poke.move3.name) && !poke.learnSet.get(poke.level).equals(poke.move4.name)) {
+                Move newMove = new Move(poke.learnSet.get(poke.level));
+                //check for empty slots 
+                if("-".equals(poke.move1.name) && (newMove.name != poke.move1.name)) {
+                    poke.move1 = newMove;
+                    System.out.println(poke.name + " learned " + poke.move1.name);
+                    return;
+                }
+                
+                if("-".equals(poke.move2.name)&& (newMove.name != poke.move2.name)) {
+                    poke.move2 = newMove;
+                    System.out.println(poke.name + " learned " + poke.move2.name);
+                    return;
+                }
+                
+                if("-".equals(poke.move3.name)&& (newMove.name != poke.move3.name)) {
+                    poke.move3 = new Move(poke.learnSet.get(poke.level));
+                    System.out.println(poke.name + " learned " + poke.move3.name);
+                    return;
+                }
+                
+                if("-".equals(poke.move4.name)&& (newMove.name != poke.move4.name)) {
+                    poke.move4 = new Move(poke.learnSet.get(poke.level));
+                    System.out.println(poke.name + " learned " + poke.move4.name);
+                    return;
+                }
+                //if no empty slot prompt user to replace 
+                System.out.println(poke.name + " wants to learn " + poke.learnSet.get(poke.level) + "!");
+                System.out.println("But, " + poke.name + " already knows four moves.");
+                System.out.println("Delete a move to make room for " + poke.learnSet.get(poke.level) + "?");
+                System.out.println("enter (no) or 1 2 3 4 to delete the corresponding move.");
+                Scanner sc = new Scanner(System.in);
+                String ans = sc.nextLine();
+                if("1".equals(ans)){
+                    System.out.println(poke.name + " forgot " + poke.move1.name);
+                    poke.move1 = new Move(poke.learnSet.get(poke.level));
+                    System.out.println(poke.name + " learned " + poke.move1.name); 
+                } else if("2".equals(ans)){
+                    System.out.println(poke.name + " forgot " + poke.move2.name);
+                    poke.move2 = new Move(poke.learnSet.get(poke.level));
+                    System.out.println(poke.name + " learned " + poke.move2.name);
+                } else if("3".equals(ans)){
+                    System.out.println(poke.name + " forgot " + poke.move3.name);
+                    poke.move3 = new Move(poke.learnSet.get(poke.level));
+                    System.out.println(poke.name + " learned " + poke.move3.name);
+                } else if("4".equals(ans)){
+                    System.out.println(poke.name + " forgot " + poke.move4.name);
+                    poke.move4 = new Move(poke.learnSet.get(poke.level));
+                    System.out.println(poke.name + " learned " + poke.move4.name);
+                } else if("no".equals(ans)) {
+                    System.out.println(poke.name + " did not learn " + poke.learnSet.get(poke.level));
+                }               
+            }
 	}
 
 	public static void teachTm(Pokemon poke) {
@@ -127,5 +182,16 @@ public class MonsterGameplay extends Pokemon {
 		evolve(poke);
 		learnMove(poke);
 	}
+        
+        public static void healTeam(Player p) {
+            p.main.current_hp = p.main.hp;
+            //p.p2.current_hp = p.p2.hp;
+            //p.p3.current_hp = p.p3.hp;
+            //p.p4.current_hp = p.p4.hp;
+            //p.p5.current_hp = p.p5.hp;
+            //p.p6.current_hp = p.p6.hp;
+            
+            //deal with PP and other stuff later when it matters
+        }
 
 }

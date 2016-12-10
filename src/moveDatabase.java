@@ -30,26 +30,49 @@ public class moveDatabase {
 		 * damage is divided by to obtain the HP regained. So if Mega Drain does 50 damage, 
 		 * amount should be set to 2 because the user regains 1/2 of health taken, so 25
 		 * HP should be given to the user. 
+                 *
+                 * In the case of stat based moves, there should be a target (foe, self), what is being changed,
+                 * and by how many stages (up to 6x multiplier) 
 		 */
 
 		database.put("-", "-|-|-|0|0|0|0|0|0|0|-|0|-|-|0|0|-");
 		database.put("Tackle", "Tackle|Normal|Phys|1|1|50|100|35|35|000|None|0|None|None|0|0|A physical attack in which the user charges, full body, into the foe.");
 		database.put("Growl", "Growl|Normal|Stat|0|1|0|100|40|40|000|None|0|Foe|att|-1|0|The user growls cutely, making the foe lower its attack stat.");
 		database.put("Leech Seed", "Leech Seed|Grass|Cond|0|1|0|90|10|10|000|Seeded|100|Foe|None|0|0|A seed is planted on the foe to steal some HP for the user on every turn.");
-		database.put("Vine Whip", "Vine Whip|Grass|Phys|1|1|45|100|25|25|000|None|0|Foe|None|0|0|The foe is struck with slender, whiplike vines.");
-		database.put("Poison Powder", "Poison Powder|Grass|Cond|");
-		database.put("Sleep Powder", "Sleep Powder|Grass|Cond|");
-		database.put("Take Down", "Take Down|Normal|Phys|");
-		database.put("Razor Leaf", "Razor Leaf|Grass|Phys|");
-		//Stopping here temporarily for testing purposes 
-                database.put("Sweet Scent", "");
-		database.put("Growth", "");
-		database.put("Double-Edge", "");
-		database.put("Worry Seed", "");
-		database.put("Synthesis", "");
-		database.put("Seed Bomb", "");
-		database.put("Solar Beam", "");
 
+                database.put("Absorb", "Absorb|Grass|Spec|0|1|50|100|25|25|0|None|0|None|None|0|0|Absorbs stuff lol.");
+                database.put("Peck", "Peck|Flying|Phys|0|1|50|100|25|25|0|None|0|None|None|0|0|Absorbs stuff lol.");
+                database.put("Mega Drain", "Mega Drain|Grass|Spec|0|1|50|100|25|25|0|None|0|None|None|0|0|Absorbs stuff lol.");
+                database.put("Pluck", "Pluck|Flying|Phys|0|1|50|100|25|25|0|None|0|None|None|0|0|Absorbs stuff lol.");
+                database.put("Grass Whistle", "Grass Whistle|Grass|Cond|0|1|50|100|25|25|0|None|0|None|None|0|0|Absorbs stuff lol.");
+                database.put("Leaf Tornado", "Leaf Tornado|Grass|Spec|0|1|50|100|25|25|0|None|0|None|None|0|0|Absorbs stuff lol.");
+                database.put("Agility", "");
+                database.put("Leaf Shield", "");
+                database.put("Synthesis", "");
+                database.put("Wind Shear", "");
+                database.put("Drill Peck", "");
+                database.put("Giga Drain", "Giga Drain|Grass|Spec|0|1|50|100|25|25|0|None|0|None|None|0|0|Absorbs stuff lol.");
+                database.put("Solar Beam", "Solar Beam|Grass|Spec|0|1|50|100|25|25|0|None|0|None|None|0|0|Absorbs stuff lol.");
+                database.put("Jet Strike", "Jet Strike|Flying|Phys|0|1|50|100|25|25|0|None|0|None|None|0|0|Absorbs stuff lol.");
+                database.put("Air Cutter", "Air Cutter|Flying|Phys|0|1|50|100|25|25|0|None|0|None|None|0|0|Absorbs stuff lol.");
+                database.put("Quiver Dance", "");
+                database.put("Tempest", "");
+                database.put("Air Slash", "");
+                database.put("Aromatherapy", "");
+                database.put("Hurricane", "");
+                database.put("", "");
+                database.put("", "");
+                database.put("", "");
+                database.put("", "");
+                database.put("", "");
+                database.put("", "");
+                database.put("", "");
+                database.put("", "");
+                database.put("", "");
+                database.put("", "");
+                database.put("", "");
+                
+                
 		String data = database.get(move);
 		return data;
 	}
