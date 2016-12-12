@@ -15,4 +15,4 @@ To run: Make sure all files in the repository are on disk, including files locat
 
 Then run the file Play.java
 
-Currently not much other than basic movement and stage transitioning (entering buildings ect.)
+Player can move and go into buildings and stuff. Can talk to the old man next to the PokeMart to increase exp of your main Pokemon. All movelearning is still on the command prompt at this point in time (to meet a deadline)
